@@ -3,107 +3,280 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My GitHub Pages Website</title>
+    <title>Your Name | Portfolio</title>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
+        /* Base Styles */
+        :root {
+            --primary-color: #0f0f0f;
+            --secondary-color: #222222;
+            --text-color: #333333;
+            --light-text: #666666;
+            --background: #ffffff;
+            --spacing: 20px;
+        }
+        
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
+            box-sizing: border-box;
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
-        .container {
-            width: 80%;
+        
+        body {
+            background-color: var(--background);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 0 5%;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 30px 0;
         }
+        
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s;
+        }
+        
+        a:hover {
+            border-bottom: 1px solid var(--primary-color);
+        }
+        
+        /* Header Styles */
         header {
-            background-color: #35424a;
-            color: white;
-            padding: 20px 0;
-            text-align: center;
+            padding: var(--spacing) 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        h1 {
-            margin: 0;
+        
+        .logo {
+            font-size: 22px;
+            font-weight: 600;
         }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        /* Hero Section */
         .hero {
-            background-color: #fff;
-            padding: 30px;
-            margin: 20px 0;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            padding: 120px 0;
+            max-width: 800px;
         }
-        .content-section {
-            background-color: #fff;
-            padding: 30px;
-            margin: 20px 0;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing);
+            line-height: 1.2;
         }
-        footer {
-            background-color: #35424a;
-            color: white;
-            text-align: center;
-            padding: 20px 0;
+        
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--light-text);
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+        
+        /* Project Section */
+        .projects {
+            padding: var(--spacing) 0;
+        }
+        
+        .projects h2 {
+            font-size: 1.75rem;
+            margin-bottom: var(--spacing);
+        }
+        
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .project-card {
+            background-color: var(--background);
+            border-radius: 5px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .project-img {
+            width: 100%;
+            height: 200px;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .project-info {
+            padding: 20px;
+        }
+        
+        .project-info h3 {
+            margin-bottom: 10px;
+        }
+        
+        .project-info p {
+            color: var(--light-text);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            max-width: 800px;
+        }
+        
+        .about h2 {
+            font-size: 1.75rem;
+            margin-bottom: var(--spacing);
+        }
+        
+        .about p {
+            margin-bottom: 20px;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            max-width: 800px;
+        }
+        
+        .contact h2 {
+            font-size: 1.75rem;
+            margin-bottom: var(--spacing);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 20px;
             margin-top: 20px;
         }
-        .button {
-            display: inline-block;
-            background-color: #35424a;
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-top: 10px;
+        
+        /* Footer */
+        footer {
+            padding: 60px 0 20px;
+            color: var(--light-text);
+            font-size: 0.9rem;
+            display: flex;
+            justify-content: space-between;
         }
-        .button:hover {
-            background-color: #2c3840;
+        
+        .footer-links a {
+            margin-left: 15px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            nav {
+                display: none;
+            }
+            
+            footer {
+                flex-direction: column;
+                gap: 20px;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="container">
-            <h1>My Website</h1>
-            <p>Welcome to my GitHub Pages site</p>
-        </div>
-    </header>
-
-    <div class="container">
-        <section class="hero">
-            <h2>Hello, I'm [Your Name]</h2>
-            <p>This is my personal website hosted on GitHub Pages.</p>
-            <a href="#about" class="button">Learn More</a>
-        </section>
-
-        <section id="about" class="content-section">
-            <h2>About Me</h2>
-            <p>I am a [your profession/interests] passionate about [something you love]. This website showcases my projects and skills.</p>
-            <p>Feel free to explore and get in touch if you'd like to collaborate!</p>
-        </section>
-
-        <section class="content-section">
-            <h2>My Projects</h2>
-            <p>Here are some projects I've worked on:</p>
+        <div class="logo">YourName</div>
+        <nav>
             <ul>
-                <li><strong>Project 1</strong> - Description of your first project.</li>
-                <li><strong>Project 2</strong> - Description of your second project.</li>
-                <li><strong>Project 3</strong> - Description of your third project.</li>
+                <li><a href="#work">Work</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="hero">
+            <h1>Designer & Developer creating thoughtful digital experiences</h1>
+            <p>I'm a designer and developer with a focus on creating clean, user-centered digital experiences. Currently available for freelance projects and collaborations.</p>
         </section>
-
-        <section class="content-section">
-            <h2>Contact</h2>
-            <p>You can reach me at:</p>
-            <p>Email: your.email@example.com</p>
-            <p>GitHub: <a href="https://github.com/yourusername">github.com/yourusername</a></p>
+        
+        <section id="work" class="projects">
+            <h2>Selected Projects</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="project-img">Project Image</div>
+                    <div class="project-info">
+                        <h3>Project Title</h3>
+                        <p>Web Design, Development</p>
+                        <a href="#">View Project →</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-img">Project Image</div>
+                    <div class="project-info">
+                        <h3>Project Title</h3>
+                        <p>UI/UX Design, Branding</p>
+                        <a href="#">View Project →</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-img">Project Image</div>
+                    <div class="project-info">
+                        <h3>Project Title</h3>
+                        <p>Mobile App, Development</p>
+                        <a href="#">View Project →</a>
+                    </div>
+                </div>
+            </div>
         </section>
-    </div>
-
+        
+        <section id="about" class="about">
+            <h2>About Me</h2>
+            <p>Hello! I'm [Your Name], a designer and developer based in [Your Location]. I specialize in creating clean, intuitive interfaces and experiences that prioritize user needs while meeting business goals.</p>
+            <p>With a background in both design and development, I bring a holistic perspective to projects, ensuring seamless transitions from concept to execution. I've worked with clients ranging from startups to established brands, helping them build digital products that users love.</p>
+            <p>When I'm not designing or coding, you can find me [your interests/hobbies].</p>
+        </section>
+        
+        <section id="contact" class="contact">
+            <h2>Get in Touch</h2>
+            <p>I'm currently available for freelance work and collaborations. If you have a project in mind or just want to say hello, feel free to reach out.</p>
+            <p><a href="mailto:your.email@example.com">your.email@example.com</a></p>
+            <div class="social-links">
+                <a href="#">Twitter</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">GitHub</a>
+                <a href="#">Dribbble</a>
+            </div>
+        </section>
+    </main>
+    
     <footer>
-        <div class="container">
-            <p>&copy; 2025 My Website. All rights reserved.</p>
+        <div class="copyright">© 2025 Your Name. All rights reserved.</div>
+        <div class="footer-links">
+            <a href="#">Twitter</a>
+            <a href="#">LinkedIn</a>
+            <a href="#">GitHub</a>
         </div>
     </footer>
 </body>
