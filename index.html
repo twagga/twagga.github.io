@@ -3,281 +3,295 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name | Portfolio</title>
+    <title>Minimal Desktop</title>
     <style>
-        /* Base Styles */
-        :root {
-            --primary-color: #0f0f0f;
-            --secondary-color: #222222;
-            --text-color: #333333;
-            --light-text: #666666;
-            --background: #ffffff;
-            --spacing: 20px;
-        }
-        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Inter', -apple-system, sans-serif;
         }
         
         body {
-            background-color: var(--background);
-            color: var(--text-color);
-            line-height: 1.6;
-            padding: 0 5%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        a {
-            color: var(--primary-color);
-            text-decoration: none;
-            border-bottom: 1px solid transparent;
-            transition: border-color 0.3s;
-        }
-        
-        a:hover {
-            border-bottom: 1px solid var(--primary-color);
-        }
-        
-        /* Header Styles */
-        header {
-            padding: var(--spacing) 0;
+            background-color: #f5f5f5;
+            color: #333;
+            height: 100vh;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-size: 22px;
-            font-weight: 600;
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        
-        nav ul li {
-            margin-left: 20px;
-        }
-        
-        /* Hero Section */
-        .hero {
-            padding: 120px 0;
-            max-width: 800px;
-        }
-        
-        .hero h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: var(--spacing);
-            line-height: 1.2;
-        }
-        
-        .hero p {
-            font-size: 1.25rem;
-            color: var(--light-text);
-            margin-bottom: 30px;
-            max-width: 600px;
-        }
-        
-        /* Project Section */
-        .projects {
-            padding: var(--spacing) 0;
-        }
-        
-        .projects h2 {
-            font-size: 1.75rem;
-            margin-bottom: var(--spacing);
-        }
-        
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-        
-        .project-card {
-            background-color: var(--background);
-            border-radius: 5px;
+            flex-direction: column;
             overflow: hidden;
-            transition: transform 0.3s;
         }
         
-        .project-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .project-img {
-            width: 100%;
-            height: 200px;
-            background-color: #f0f0f0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .project-info {
+        .desktop {
+            flex: 1;
+            position: relative;
             padding: 20px;
         }
         
-        .project-info h3 {
-            margin-bottom: 10px;
+        .taskbar {
+            height: 40px;
+            background-color: #fff;
+            border-top: 1px solid #e0e0e0;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
         }
         
-        .project-info p {
-            color: var(--light-text);
-            font-size: 0.9rem;
+        .icon {
+            width: 80px;
+            height: 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 10px;
+            cursor: pointer;
+            text-align: center;
+            border-radius: 5px;
+            transition: background-color 0.2s;
+        }
+        
+        .icon:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+        
+        .icon-img {
+            width: 40px;
+            height: 40px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 5px;
+            font-size: 20px;
+        }
+        
+        .icon-label {
+            font-size: 12px;
+        }
+        
+        .window {
+            position: absolute;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: none;
+            z-index: 10;
+            min-width: 400px;
+            min-height: 300px;
+            max-width: 80%;
+            max-height: 80%;
+        }
+        
+        .window-header {
+            background-color: #f0f0f0;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e0e0e0;
+            cursor: move;
+        }
+        
+        .window-title {
+            font-weight: 500;
+        }
+        
+        .window-controls {
+            display: flex;
+        }
+        
+        .window-close {
+            width: 15px;
+            height: 15px;
+            background-color: #ff5f57;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        .window-content {
+            padding: 20px;
+            overflow-y: auto;
+            height: calc(100% - 40px);
+        }
+        
+        h2 {
             margin-bottom: 15px;
         }
         
-        /* About Section */
-        .about {
-            padding: 80px 0;
-            max-width: 800px;
-        }
-        
-        .about h2 {
-            font-size: 1.75rem;
-            margin-bottom: var(--spacing);
-        }
-        
-        .about p {
-            margin-bottom: 20px;
-        }
-        
-        /* Contact Section */
-        .contact {
-            padding: 80px 0;
-            max-width: 800px;
-        }
-        
-        .contact h2 {
-            font-size: 1.75rem;
-            margin-bottom: var(--spacing);
+        p {
+            margin-bottom: 15px;
+            line-height: 1.6;
         }
         
         .social-links {
-            display: flex;
-            gap: 20px;
             margin-top: 20px;
         }
         
-        /* Footer */
-        footer {
-            padding: 60px 0 20px;
-            color: var(--light-text);
-            font-size: 0.9rem;
-            display: flex;
-            justify-content: space-between;
+        .social-links a {
+            margin-right: 10px;
+            color: #333;
+            text-decoration: none;
         }
         
-        .footer-links a {
-            margin-left: 15px;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .project-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            nav {
-                display: none;
-            }
-            
-            footer {
-                flex-direction: column;
-                gap: 20px;
-            }
+        .clock {
+            margin-left: auto;
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="logo">YourName</div>
-        <nav>
-            <ul>
-                <li><a href="#work">Work</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    
-    <main>
-        <section class="hero">
-            <h1>Designer & Developer creating thoughtful digital experiences</h1>
-            <p>I'm a designer and developer with a focus on creating clean, user-centered digital experiences. Currently available for freelance projects and collaborations.</p>
-        </section>
-        
-        <section id="work" class="projects">
-            <h2>Selected Projects</h2>
-            <div class="project-grid">
-                <div class="project-card">
-                    <div class="project-img">Project Image</div>
-                    <div class="project-info">
-                        <h3>Project Title</h3>
-                        <p>Web Design, Development</p>
-                        <a href="#">View Project →</a>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-img">Project Image</div>
-                    <div class="project-info">
-                        <h3>Project Title</h3>
-                        <p>UI/UX Design, Branding</p>
-                        <a href="#">View Project →</a>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-img">Project Image</div>
-                    <div class="project-info">
-                        <h3>Project Title</h3>
-                        <p>Mobile App, Development</p>
-                        <a href="#">View Project →</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section id="about" class="about">
-            <h2>About Me</h2>
-            <p>Hello! I'm [Your Name], a designer and developer based in [Your Location]. I specialize in creating clean, intuitive interfaces and experiences that prioritize user needs while meeting business goals.</p>
-            <p>With a background in both design and development, I bring a holistic perspective to projects, ensuring seamless transitions from concept to execution. I've worked with clients ranging from startups to established brands, helping them build digital products that users love.</p>
-            <p>When I'm not designing or coding, you can find me [your interests/hobbies].</p>
-        </section>
-        
-        <section id="contact" class="contact">
-            <h2>Get in Touch</h2>
-            <p>I'm currently available for freelance work and collaborations. If you have a project in mind or just want to say hello, feel free to reach out.</p>
-            <p><a href="mailto:your.email@example.com">your.email@example.com</a></p>
-            <div class="social-links">
-                <a href="#">Twitter</a>
-                <a href="#">LinkedIn</a>
-                <a href="#">GitHub</a>
-                <a href="#">Dribbble</a>
-            </div>
-        </section>
-    </main>
-    
-    <footer>
-        <div class="copyright">© 2025 Your Name. All rights reserved.</div>
-        <div class="footer-links">
-            <a href="#">Twitter</a>
-            <a href="#">LinkedIn</a>
-            <a href="#">GitHub</a>
+    <div class="desktop" id="desktop">
+        <!-- Desktop Icons -->
+        <div class="icon" onclick="openWindow('about')">
+            <div class="icon-img">👤</div>
+            <div class="icon-label">About</div>
         </div>
-    </footer>
+        
+        <div class="icon" onclick="openWindow('projects')">
+            <div class="icon-img">📁</div>
+            <div class="icon-label">Projects</div>
+        </div>
+        
+        <div class="icon" onclick="openWindow('contact')">
+            <div class="icon-img">✉️</div>
+            <div class="icon-label">Contact</div>
+        </div>
+        
+        <!-- Windows -->
+        <div class="window" id="about-window">
+            <div class="window-header">
+                <div class="window-title">About Me</div>
+                <div class="window-controls">
+                    <div class="window-close" onclick="closeWindow('about')"></div>
+                </div>
+            </div>
+            <div class="window-content">
+                <h2>About Me</h2>
+                <p>Hello! I'm [Your Name], a designer and developer based in [Your Location].</p>
+                <p>I specialize in creating clean, minimalist designs and intuitive user experiences. My background in both design and development allows me to bring ideas to life from concept to completion.</p>
+                <p>When I'm not designing or coding, you can find me exploring nature, reading, or experimenting with new technologies.</p>
+            </div>
+        </div>
+        
+        <div class="window" id="projects-window">
+            <div class="window-header">
+                <div class="window-title">My Projects</div>
+                <div class="window-controls">
+                    <div class="window-close" onclick="closeWindow('projects')"></div>
+                </div>
+            </div>
+            <div class="window-content">
+                <h2>Projects</h2>
+                <p><strong>Project 1</strong> - A minimalist portfolio site with a desktop-like interface</p>
+                <p><strong>Project 2</strong> - Interactive data visualization for climate change awareness</p>
+                <p><strong>Project 3</strong> - Mobile app for daily productivity tracking</p>
+            </div>
+        </div>
+        
+        <div class="window" id="contact-window">
+            <div class="window-header">
+                <div class="window-title">Contact</div>
+                <div class="window-controls">
+                    <div class="window-close" onclick="closeWindow('contact')"></div>
+                </div>
+            </div>
+            <div class="window-content">
+                <h2>Get In Touch</h2>
+                <p>Email: your.email@example.com</p>
+                <div class="social-links">
+                    <a href="#">Twitter</a>
+                    <a href="#">GitHub</a>
+                    <a href="#">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="taskbar">
+        <div class="clock" id="clock"></div>
+    </div>
+    
+    <script>
+        // Window management
+        function openWindow(id) {
+            const window = document.getElementById(id + '-window');
+            window.style.display = 'block';
+            window.style.left = '50%';
+            window.style.top = '50%';
+            window.style.transform = 'translate(-50%, -50%)';
+            
+            // Bring to front
+            const windows = document.querySelectorAll('.window');
+            windows.forEach(w => {
+                w.style.zIndex = '10';
+            });
+            window.style.zIndex = '20';
+        }
+        
+        function closeWindow(id) {
+            document.getElementById(id + '-window').style.display = 'none';
+        }
+        
+        // Make windows draggable
+        const windows = document.querySelectorAll('.window');
+        windows.forEach(makeWindowDraggable);
+        
+        function makeWindowDraggable(element) {
+            const header = element.querySelector('.window-header');
+            let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+            
+            header.onmousedown = dragMouseDown;
+            
+            function dragMouseDown(e) {
+                e = e || window.event;
+                e.preventDefault();
+                // Get mouse position at startup
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+                
+                // Bring window to front
+                windows.forEach(w => {
+                    w.style.zIndex = '10';
+                });
+                element.style.zIndex = '20';
+                
+                document.onmouseup = closeDragElement;
+                document.onmousemove = elementDrag;
+            }
+            
+            function elementDrag(e) {
+                e = e || window.event;
+                e.preventDefault();
+                
+                // Calculate new position
+                pos1 = pos3 - e.clientX;
+                pos2 = pos4 - e.clientY;
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+                
+                // Set element's new position
+                element.style.top = (element.offsetTop - pos2) + "px";
+                element.style.left = (element.offsetLeft - pos1) + "px";
+                element.style.transform = 'none';
+            }
+            
+            function closeDragElement() {
+                document.onmouseup = null;
+                document.onmousemove = null;
+            }
+        }
+        
+        // Clock
+        function updateClock() {
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+            document.getElementById('clock').textContent = timeStr;
+        }
+        
+        updateClock();
+        setInterval(updateClock, 1000);
+    </script>
 </body>
 </html>
